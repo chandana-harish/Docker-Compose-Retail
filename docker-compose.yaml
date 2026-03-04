@@ -30,7 +30,7 @@ services:
       - flower-network
  
 volumes:
-  sql_data:
+  mysql_data:
  
 networks:
   flower-network:
