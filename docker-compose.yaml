@@ -1,0 +1,37 @@
+version: '3.8'
+ 
+services:
+
+  Retail-app-web:
+
+    image: chandu554/retail-cap:v1.1.0
+    container_name: Retail-app
+    ports:
+      - "3000:3000"
+    environment:
+      - MYSQL_HOST=mysql-cont
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=example
+      - MYSQL_DATABASE=AFF_Docker
+    depends_on:
+      - Retail-mongodb
+    networks:
+      - flower-network
+ 
+  Retail-mongodb:
+    image: mysql
+    container_name: mysql-cont
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - flower-network
+ 
+volumes:
+  sql_data:
+ 
+networks:
+  flower-network:
+ 
